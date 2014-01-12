@@ -1,0 +1,16 @@
+check process unicorn_<%= @app_name %>
+  with pidfile <%= @tmp_path %>/pids/unicorn.pid
+  group unicorn
+  group unicorn_<%= @app_name %>
+  group <%= @app_name %>
+
+  start program = "/bin/su <%= @user %> -l && /bin/bash -c 'cd <%= @app_path %>; RAILS_ENV=<%= @rails_env %> /data/bin/rbenv-exec bundle exec unicorn_rails -l <%= @tmp_path %>/sockets/unicorn.sock -c <%= @app_path %>/config/unicorn/<%= @rails_env %>.rb -D -E <%= @rails_env %>'" with timeout 30 seconds
+  stop program = "/bin/bash -c 'kill -QUIT `cat <%= @tmp_path %>/pids/unicorn.pid`'" with timeout 30 seconds
+
+  if failed unixsocket <%= @tmp_path %>/sockets/unicorn.sock then restart
+  if 2 restarts within 15 cycles then timeout
+  if totalmem is greater than 600 MB then restart # eating up memory?
+
+check file unicorn_<%= @app_name %>_restart with path <%= @tmp_path %>/restart.txt
+    if changed timestamp
+      then exec "/usr/bin/monit -g <%= @app_name %> restart all"
