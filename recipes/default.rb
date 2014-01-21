@@ -1,11 +1,7 @@
-
-include_recipe 'apt'
-include_recipe 'monit'
-include_recipe 'rbenv'
+include_recipe 'rails-stack::ruby'
 
 package 'gettext'
 
 rbenv_gem 'unicorn' do
   ruby_version node[:ruby][:version]
-  # source 'http://rubygems.org'
 end

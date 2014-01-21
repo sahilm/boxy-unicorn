@@ -7,17 +7,16 @@ This cookbook makes your favorite breakfast sandwhich.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
+#### cookbooks
+- `rbenv` - Support only rbenv for now
+
 #### packages
-- `toaster` - unicorn needs toaster to brown your bagel.
+- `gettext` - unicorn needs gettext
 
 Attributes
 ----------
-TODO: List you cookbook attributes here.
 
-e.g.
 #### unicorn::default
 <table>
   <tr>
@@ -27,10 +26,10 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['unicorn']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['ruby']['version']</tt></td>
+    <td>String</td>
+    <td>Chose the rbenv version</td>
+    <td><tt>2.1.0</tt></td>
   </tr>
 </table>
 
