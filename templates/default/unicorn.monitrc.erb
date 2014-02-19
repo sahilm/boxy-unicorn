@@ -9,7 +9,7 @@ check process unicorn_<%= @app_name %>
 
   if failed unixsocket <%= @tmp_path %>/sockets/unicorn.sock then restart
   if 2 restarts within 15 cycles then timeout
-  if totalmem is greater than 600 MB then restart # eating up memory?
+  if totalmem is greater than <%= @totalmem || 600 %> MB then restart # eating up memory?
 
 check file unicorn_<%= @app_name %>_restart with path <%= @tmp_path %>/restart.txt
     if changed timestamp
