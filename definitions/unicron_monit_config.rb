@@ -1,5 +1,8 @@
-define :unicorn_monit_config, rails_env: 'production', app_path: '', worker_name: 'unicorn',
-                              tmp_path: '/tmp', totalmem: 600 do
+define :unicorn_monit_config,
+       rails_env:   'production', app_path: '',
+       worker_name: 'unicorn',
+       tmp_path:    '/tmp', totalmem: 600 do
+
   options = {
       user:        node['rails-stack']['deployer'],
       app_name:    params[:name],
