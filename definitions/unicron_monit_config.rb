@@ -4,7 +4,7 @@ define :unicorn_monit_config,
        tmp_path:    '/tmp', totalmem: 600 do
 
   options = {
-      user:        node['rails-stack']['deployer'],
+      user:        node['boxy-rails']['deployer'],
       app_name:    params[:name],
       rails_env:   params[:rails_env],
       app_path:    params[:app_path],

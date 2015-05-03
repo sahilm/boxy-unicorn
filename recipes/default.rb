@@ -1,4 +1,4 @@
-include_recipe 'rails-stack::ruby'
+include_recipe 'boxy-rails::ruby'
 
 package 'gettext'
 
