@@ -12,5 +12,5 @@ check process unicorn_<%= @app_name %>
 check file unicorn_<%= @app_name %>_restart
   with path <%= @tmp_path %>/restart.txt
   if changed timestamp
-    then exec "/bin/bash -c 'kill -USR2 `cat <%= @tmp_path %>/pids/unicorn.pid` &&  monit -g <%= @app_name %> restart all'"
+    then exec "/bin/bash -c 'kill -USR2 `cat <%= @tmp_path %>/pids/unicorn.pid` &&  monit -g delayed_job restart all'"
 
